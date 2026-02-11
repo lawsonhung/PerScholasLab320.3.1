@@ -5,10 +5,10 @@ import learnersData from "./utilities/learnerData.js";
 import Learner from './components/Learner';
 
 function App() {
-  const [learners, _setLearners] = useState(learnersData);
+  const [learnersObj, _setLearners] = useState(learnersData);
 
   function mapLearners() {
-    return learners.map(learner => {
+    return learnersObj.learners.map(learner => {
       const {name, bio, scores} = learner;
       return (
         <Learner key={name} learnerName={name} bio={bio} scores={scores} />
