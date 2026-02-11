@@ -1,7 +1,7 @@
 interface LearnerProps {
   learnerName: String,
   bio: String,
-  scores?: [Score],
+  scores: Score[],
 }
 
 interface Score {
@@ -10,19 +10,24 @@ interface Score {
 }
 
 export default function Learner({learnerName, bio, scores}: LearnerProps) {
+
+  function mapScores() {
+    return scores.map(score => {
+      return (
+        <li>
+          <p>Date: {score.date}</p>
+          <p>Score: {score.score.toString()}</p>
+        </li>
+      )
+    });
+  };
+
   return (
     <>
       <h3>{learnerName}</h3>
       <p>{bio}</p>
       <ul>
-        {scores?.map(score => {
-          return (
-            <li>
-              <p>Date: {score.date}</p>
-              <p>Score: {score.score.toString()}</p>
-            </li>
-          );
-        })}
+        {mapScores()}
       </ul>
     </>
   )
