@@ -1,3 +1,5 @@
+import "./Learner.css";
+
 interface LearnerProps {
   learnerName: String,
   bio: String,
@@ -14,7 +16,7 @@ export default function Learner({learnerName, bio, scores}: LearnerProps) {
   function mapScores() {
     return scores.map(score => {
       return (
-        <li>
+        <li key={score.date + score.score.toString()}>
           <p>Date: {score.date}</p>
           <p>Score: {score.score.toString()}</p>
         </li>
@@ -25,8 +27,8 @@ export default function Learner({learnerName, bio, scores}: LearnerProps) {
   return (
     <>
       <h3>{learnerName}</h3>
-      <p>{bio}</p>
-      <ul>
+      <p className="bio">{bio}</p>
+      <ul className="scoreList">
         {mapScores()}
       </ul>
     </>

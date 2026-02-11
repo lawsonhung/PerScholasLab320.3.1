@@ -11,7 +11,7 @@ function App() {
     return learners.map(learner => {
       const {name, bio, scores} = learner;
       return (
-        <Learner learnerName={name} bio={bio} scores={scores} />
+        <Learner key={name} learnerName={name} bio={bio} scores={scores} />
       )
     })
   };
